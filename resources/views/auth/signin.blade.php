@@ -1,36 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Sign In</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdminLTE 3 | Sign In</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }}">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="{{ asset('adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
 </head>
-<body>
-    <h2>Đăng ký tài khoản</h2>
+<body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+    <a href="#"><b>Admin</b>LTE</a>
+  </div>
+  <div class="card">
+    <div class="card-body login-card-body">
+      <p class="login-box-msg">Sign in to start your session</p>
 
-    <form method="POST" action="/signin">
+      {{-- Form login --}}
+      <form action="{{ route('signin.post') }}" method="POST">
         @csrf
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Username" name="username" required>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-user"></span>
+            </div>
+          </div>
+        </div>
 
-        <label>Tên người dùng</label><br>
-        <input type="text" name="username"><br><br>
+        <div class="input-group mb-3">
+          <input type="password" class="form-control" placeholder="Password" name="password" required>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
 
-        <label>Mật khẩu</label><br>
-        <input type="password" name="password"><br><br>
+        <div class="row">
+          <div class="col-8">
+            <div class="icheck-primary">
+              <input type="checkbox" id="remember">
+              <label for="remember">Remember Me</label>
+            </div>
+          </div>
+          <div class="col-4">
+            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+          </div>
+        </div>
+      </form>
 
-        <label>Đặt lại mật khẩu</label><br>
-        <input type="password" name="repass"><br><br>
+      <p class="mt-3 mb-1">
+        <a href="{{ route('auth.register') }}">Register a new membership</a>
+      </p>
 
-        <label>MSSV</label><br>
-        <input type="text" name="mssv"><br><br>
+    </div>
+  </div>
+</div>
 
-        <label>Lớp môn học</label><br>
-        <input type="text" name="lopmonhoc"><br><br>
-
-        <label>Giới tính</label><br>
-        <select name="gioitinh">
-            <option value="nam">Nam</option>
-            <option value="nu">Nữ</option>
-        </select><br><br>
-
-        <button type="submit">Sign In</button>
-    </form>
+<!-- Scripts -->
+<script src="{{ asset('adminlte/plugins/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
 </body>
 </html>
